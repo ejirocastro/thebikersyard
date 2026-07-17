@@ -1,3 +1,5 @@
+import Embers from "./Embers";
+
 const features = [
   {
     title: "Extreme Power",
@@ -77,13 +79,9 @@ export default function Features() {
     >
       {/* secondary glow bottom-left for depth */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_15%_100%,rgba(140,50,0,0.3),transparent_65%)]" />
+      <Embers count={20} />
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-14 pb-6 sm:px-10">
-        {/*
-          True glassmorphism: panel must be semi-transparent so the fire
-          behind bleeds through the blur — bg uses rgba not a Tailwind
-          opacity class so it doesn't fight the backdrop-filter
-        */}
+      <div className="relative mx-auto max-w-6xl px-4 pt-10 pb-6 sm:px-6 sm:pt-14 lg:px-10">
         <div
           className="rounded-2xl backdrop-blur-md shadow-[0_20px_80px_rgba(0,0,0,0.8)]"
           style={{
@@ -95,9 +93,11 @@ export default function Features() {
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`flex flex-col gap-4 p-8 transition-colors hover:bg-white/[0.03] ${
+                className={`flex flex-col gap-3 p-5 transition-colors hover:bg-white/[0.03] sm:p-6 lg:p-8 ${
                   i < 3 ? "lg:border-r" : ""
-                } ${i === 1 ? "sm:border-r" : ""}`}
+                } ${i === 0 ? "sm:border-r" : ""} ${
+                  i < 2 ? "border-b sm:border-b-0 lg:border-b-0" : ""
+                } ${i === 2 ? "sm:border-r-0 lg:border-r" : ""}`}
                 style={{ borderColor: "rgba(255,150,50,0.08)" }}
               >
                 <span className="text-accent">{f.icon}</span>
@@ -105,7 +105,7 @@ export default function Features() {
                   <p className="text-xs font-bold uppercase tracking-widest text-white">
                     {f.title}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/50">
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/50">
                     {f.description}
                   </p>
                 </div>
@@ -116,16 +116,18 @@ export default function Features() {
       </div>
 
       {/* stats bar */}
-      <div className="relative mx-auto max-w-6xl px-6 py-12 sm:px-10">
-        <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">
+      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
+        <div className="grid grid-cols-2 gap-y-6 sm:gap-y-8 lg:grid-cols-4">
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`flex flex-col items-center gap-2 ${
-                i !== stats.length - 1 ? "lg:border-r lg:border-white/10" : ""
+              className={`flex flex-col items-center gap-1.5 ${
+                i % 2 === 0 ? "border-r border-white/10 lg:border-r" : ""
+              } ${i < 2 ? "pb-6 sm:pb-8 lg:pb-0 lg:border-b-0" : ""} ${
+                i === 2 ? "lg:border-r" : ""
               }`}
             >
-              <span className="font-display text-5xl font-bold italic text-accent sm:text-6xl">
+              <span className="font-display text-4xl font-bold italic text-accent sm:text-5xl lg:text-6xl">
                 {s.value}
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/50">
