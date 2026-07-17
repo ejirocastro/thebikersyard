@@ -41,7 +41,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const router = useRouter();
   const product = PRODUCTS.find((p) => p.id === Number(id));
 
-  const { selectedBike, addToCart, toggleWishlist, wishlist, addToGarage } = useGarageStore();
+  const { selectedBike, addToCart, toggleWishlist, wishlist } = useGarageStore();
   const [qty, setQty] = useState(1);
   const [activeTab, setActiveTab] = useState<"specs" | "install" | "compatibility" | "reviews">("specs");
   const [added, setAdded] = useState(false);
@@ -92,7 +92,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   ];
 
   function handleAddToCart() {
-    addToCart(product.id, qty);
+    addToCart(product!.id, qty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
   }
