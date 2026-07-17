@@ -14,30 +14,27 @@ export default function StaysPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0a0a]">
       <Navbar />
-
-      {/* sticky filter bar */}
       <StayFilterBar />
 
       <main className="flex-1">
-        {/* page header */}
-        <div className="mx-auto max-w-screen-xl px-4 pt-10 pb-6 sm:px-6 lg:px-10">
-          <h1 className="font-display text-3xl font-bold italic uppercase tracking-wide text-white sm:text-4xl lg:text-5xl">
+        <div className="mx-auto max-w-7xl px-4 pt-8 pb-4 sm:px-6 sm:pt-10 lg:px-10">
+          <h1
+            className="font-display font-bold italic uppercase tracking-wide text-white"
+            style={{ fontSize: "clamp(1.6rem, 5vw, 3rem)" }}
+          >
             Stays
           </h1>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/45 sm:text-base">
-            Discover biker-friendly stays, lodges, campsites, cabins, and premium
-            accommodations for every ride.
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base">
+            Biker-friendly lodges, campsites, cabins, and premium accommodations for every ride.
           </p>
         </div>
 
-        {/* category bar */}
-        <div className="mx-auto max-w-screen-xl px-4 pb-8 sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-10">
           <StayCategoryBar active={activeCategory} onChange={setActiveCategory} />
         </div>
 
-        {/* content rows */}
-        <div className="mx-auto max-w-screen-xl px-6 pb-16 sm:px-8 lg:px-12">
-          <div className="flex flex-col gap-12">
+        <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-10">
+          <div className="flex flex-col gap-10 sm:gap-12">
             {ROWS.map((row) => (
               <StayCarousel key={row.title} title={row.title} ids={row.ids} />
             ))}

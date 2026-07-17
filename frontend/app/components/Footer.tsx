@@ -1,7 +1,7 @@
 const footerLinks = {
-  Links: ["Home", "Training", "Shop", "Events"],
-  About: ["Cycling", "Riding", "Running"],
-  Features: ["Sign In", "Forums"],
+  Navigate: ["Home", "Garage", "Events", "Stays"],
+  Community: ["Forums", "Brotherhood", "Road Trips"],
+  Account: ["Sign In", "Join Now"],
 };
 
 const socials = [
@@ -45,70 +45,27 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-black">
-      {/* top divider glow */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+    <footer className="w-full border-t border-white/8 bg-black">
+      <div className="h-px w-full bg-linear-to-r from-transparent via-accent/40 to-transparent" />
 
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-10">
-        {/* brand row full-width on mobile, then grid on larger screens */}
-        <div className="mb-8 sm:mb-0 sm:hidden">
-          <a href="/" className="font-display text-2xl font-bold italic text-white">
-            Bikers.<span className="text-accent">Yard</span>
-          </a>
-          <p className="mt-3 text-sm leading-relaxed text-white/50">
-            Professional training and guide. Teach how to ride a bike you can try at home.
-          </p>
-          <div className="mt-4 flex items-center gap-3">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:border-accent hover:text-accent"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* link cols on mobile: 3 cols */}
-        <div className="grid grid-cols-3 gap-6 sm:hidden">
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading}>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white">
-                {heading}
-              </p>
-              <ul className="mt-3 space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-xs text-white/50 transition-colors hover:text-accent">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* desktop: full 4-col grid */}
-        <div className="hidden sm:grid sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-10">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
+        {/* main grid */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* brand col */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="/" className="font-display text-2xl font-bold italic text-white">
               Bikers.<span className="text-accent">Yard</span>
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-              Professional training and guide. Teach how to ride a bike you can try at home.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/45">
+              Built for those who live for the road. Gear, community, and adventure — all in one place.
             </p>
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex items-center gap-2.5">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:border-accent hover:text-accent"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/50 transition-all hover:border-accent/50 hover:text-accent hover:shadow-[0_0_12px_rgba(240,107,0,0.2)]"
                 >
                   {s.icon}
                 </a>
@@ -116,15 +73,19 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* link cols */}
           {Object.entries(footerLinks).map(([heading, links]) => (
             <div key={heading}>
-              <p className="font-display text-xs font-semibold uppercase tracking-widest text-white">
+              <p className="font-display text-xs font-bold uppercase tracking-[0.15em] text-white">
                 {heading}
               </p>
               <ul className="mt-4 space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-white/50 transition-colors hover:text-accent">
+                    <a
+                      href="#"
+                      className="text-sm text-white/45 transition-colors hover:text-accent"
+                    >
                       {link}
                     </a>
                   </li>
@@ -135,11 +96,11 @@ export default function Footer() {
         </div>
 
         {/* bottom bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-white/30">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/8 pt-8 sm:flex-row">
+          <p className="text-xs text-white/25">
             © {new Date().getFullYear()} Bikers.Yard. All rights reserved.
           </p>
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-white/25">
             Built for those who live for the road.
           </p>
         </div>
